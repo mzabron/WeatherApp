@@ -4,7 +4,7 @@ interface Location
     latitude: number;
     longitude: number;
 }
-interface CurrentWeather
+export interface CurrentWeather
 {
     time: Date;
     temperature: number;

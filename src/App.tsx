@@ -2,7 +2,8 @@ import "./App.css";
 import {useState, useEffect} from 'react';
 import { mockWeather } from "./api/mockWeather";
 import type {WeatherData} from "./types/weather";
-
+import {CurrentWeatherCard} from "./components/CurrentWeatherCard";
+ 
 export default function App()
 {
   return(
@@ -39,7 +40,10 @@ function FetchWeatherData()
   )
   } else if (weather){
     return(
-      <p>{weather.location.name}</p>
+      <div>
+        <p>{weather.location.name}</p>
+        {weather.currentWeather && <CurrentWeatherCard data={weather.currentWeather} />}
+      </div>
     )
   }
   return <p>No data available</p>
