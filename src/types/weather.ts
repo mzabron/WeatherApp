@@ -11,12 +11,12 @@ export interface CurrentWeather
     windSpeed: number;
     weatherCode: number;
 }
-interface HourlyForecast
+export interface HourlyForecast
 {
     time: Date[];
     temperature: number[];
 }
-interface DailyForecast
+export interface DailyForecast
 {
     date: Date[];
     tempMin: number[];

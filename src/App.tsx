@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 import { mockWeather } from "./api/mockWeather";
 import type {WeatherData} from "./types/weather";
 import {CurrentWeatherCard} from "./components/CurrentWeatherCard";
+import {HourlyForecastList} from "./components/HourlyForecastList";
+import {DailyForecastList} from "./components/DailyForecastList";
  
 export default function App()
 {
@@ -41,8 +43,21 @@ function FetchWeatherData()
   } else if (weather){
     return(
       <div>
-        <p>{weather.location.name}</p>
-        {weather.currentWeather && <CurrentWeatherCard data={weather.currentWeather} />}
+        <header>
+        <h2>{weather.location.name}</h2>
+        </header>
+          <div className="section current">
+            <h2>Current Weather</h2>
+            {weather.currentWeather && <CurrentWeatherCard data={weather.currentWeather} />}
+          </div>
+          <div className="section hourly">
+            <h2>Hourly Forecast</h2>
+            {weather.hourlyForecast && <HourlyForecastList forecast={weather.hourlyForecast} />}
+          </div>
+          <div className="section daily">
+            <h2>7-Day Forecast</h2>
+            {weather.dailyForecast && <DailyForecastList forecast={weather.dailyForecast} />}
+          </div>
       </div>
     )
   }
